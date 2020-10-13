@@ -31,5 +31,17 @@ function render() {
   }
 };
 
+let submitBtn = document.getElementById('candy-form-submit');
+let candy = document.getElementById('candy');
+
+submitBtn.addEventListener('click', event => {
+  event.preventDefault();
+  let newCandy = candy.value;
+  candy.value = "";
+  store.dispatch({ type: 'ADD_CANDY', candy: newCandy})
+})
+
+
+
 let store = createStore(candyReducer);
 store.dispatch({ type: '@@INIT' })
